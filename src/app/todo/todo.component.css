@@ -22,12 +22,6 @@ input {
     padding: 5px;
 }
 
-li{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .strikethrough {
     text-decoration: line-through;
 }
@@ -45,4 +39,5 @@ li{
     background-color: white;
     border: none;
     cursor: pointer;
+    float: right;
 }

@@ -1,12 +1,14 @@
 <div class="todo-container">
     <h2>TODO List</h2>
     <p>A place to store your todos</p>
-    <input [(ngModel)]="filterText" type="text" placeholder="Filter your todos" (keyup)="filter()" />
+    <input [(ngModel)]="filterText" type="text" placeholder="Filter your todos" />
     <ol class="todos">
-        <li *ngFor="let todo of todos" [ngClass]="{ strikethrough: todo.completed }"><span><button class="complete-btn"
-                    *ngIf="!todo.completed"
-                    (click)="completeTodo(todo)">Complete</button>{{todo.task}}</span><span><button class="done-btn"
-                    (click)="removeTodo(todo)">X</button></span></li>
+        <li *ngFor="let todo of filter()">
+            <button class="complete-btn" *ngIf="!todo.completed" (click)="completeTodo(todo)">Complete</button>
+            <span [ngClass]="{ strikethrough: todo.completed }">{{todo.task}}</span>
+            <!-- <button class="done-btn" (click)="removeTodo(todo)">X</button> -->
+            <button class="done-btn" (click)="removeTodo($event)">X</button>
+        </li>
     </ol>
     <input type="text" placeholder="Add your todo" [(ngModel)]="newTodo" />
     <button class="add-button" (click)="addTodo()">Add</button>
